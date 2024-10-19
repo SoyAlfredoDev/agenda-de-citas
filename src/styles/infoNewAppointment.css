@@ -1,0 +1,45 @@
+:root {
+    /* Colores principales */
+    --color-principal: #00bf86;
+    /* Verde principal */
+    --color-secundario: #FFC857;
+    /* Amarillo para botones y elementos destacados */
+
+    /* Colores de texto */
+    --color-texto-claro: #ffffff;
+    /* Texto claro (blanco) */
+    --color-texto-oscuro: #4A4A4A;
+    /* Texto oscuro (gris oscuro) */
+
+    /* Color de fondo */
+    --color-fondo: #F0F0F0;
+    /* Fondo gris claro */
+    --color-fondo-alternativo: #F7F5F2;
+    /* Fondo beige claro */
+
+    --color--gris-fondo: #e0e0e0;
+}
+
+.dayName {
+    grid-area: dayName;
+    display: flex;
+    align-items: end;
+}
+
+.dayNumber {
+    grid-area: dayNumber;
+    font-size: 3rem;
+}
+
+.boxInfo {
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+.boxInfoDate {
+
+    color: var();
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'dayName dayNumber';
+}

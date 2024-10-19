@@ -1,0 +1,84 @@
+:root {
+    /* Colores principales */
+    --color-principal: #00bf86;
+    /* Verde principal */
+    --color-secundario: #FFC857;
+    /* Amarillo para botones y elementos destacados */
+
+    /* Colores de texto */
+    --color-texto-claro: #ffffff;
+    /* Texto claro (blanco) */
+    --color-texto-oscuro: #4A4A4A;
+    /* Texto oscuro (gris oscuro) */
+
+    /* Color de fondo */
+    --color-fondo: #F0F0F0;
+    /* Fondo gris claro */
+    --color-fondo-alternativo: #F7F5F2;
+    /* Fondo beige claro */
+
+    --color--gris-fondo: #B0B0B0;
+}
+
+
+* body {
+    background-color: #fff;
+    margin: 0px;
+    padding: 0px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.boxNavBar {
+    grid-area: boxNavBar;
+    background-color: var(--color-principal)
+}
+
+.boxNavBar nav ul {
+    padding: 10px;
+    cursor: default;
+}
+
+.boxNavBar nav ul li {
+    font-size: 1rem;
+    list-style: none;
+    text-decoration: none;
+    color: #ffffff;
+    margin: 15px;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.boxNavBar nav ul li:hover {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: blue;
+}
+
+.boxContent {
+    grid-area: boxContent;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.boxInfo {
+    grid-area: boxInfo;
+    background-color: var(--color--gris-fondo);
+}
+
+@media(min-width:576px) {
+    .boxBody {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 7fr 3fr;
+        grid-template-areas: 'boxNavBar boxContent boxInfo';
+    }
+}
+
+
+#date {
+    border: 2px solid var(--color-texto-oscuro);
+    font-size: 1.2rem;
+    border-radius: 50px;
+}
