@@ -1,25 +1,17 @@
 import express from 'express';
-import { createUserController, getUsersController } from '../controllers/usersController.js';
+import { createUser, getUsers, getUser, updateUser } from '../controllers/usersController.js';
+import { validateSchema, } from '../middleware/validateSchema.js';
+import { authRequired } from '../middleware/validateToken.js'
+import { createUserSchema } from '../Schemas/userSchema.js';
+
 const router = express.Router()
 
-router.post('/users', async (req, res) => {
-    try {
-        await createUserController(req, res)
-    } catch (error) {
-        console.log(error)
-    }
-})
+router.post('/user', validateSchema(createUserSchema), createUser);
 
-router.get('/users', async (req, res) => {
-    try {
-        const users = await getUsersController(req, res);
-        console.log(users);
-        res.json(users);
-    } catch (error) {
-        console.log('Error al obtener usuarios:', error);
-    }
-})
+router.get('/users', authRequired, getUsers);
 
+router.get('/user/:id', authRequired, getUser);
 
+router.put('/user/:id', authRequired, updateUser)
 
 export default router;

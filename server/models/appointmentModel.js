@@ -2,10 +2,15 @@
 import mongoose from 'mongoose';
 
 const appointmentSchema = new mongoose.Schema({
-    appointmentID: { type: String, required: true },
     appointmentDataTime: { type: String, required: true },
-    userId: { type: String, ref: 'User', required: true },
-    serviceId: { type: String, ref: 'Service', required: true }
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        requerid: true
+    },
+    serviceId: { type: String, ref: 'Service', required: true },
+}, {
+    timestamps: true
 });
 
 const Appointment = mongoose.model('Appointment', appointmentSchema);

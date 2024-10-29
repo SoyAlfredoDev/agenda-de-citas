@@ -1,10 +1,30 @@
 import express from 'express';
-import { createAppointmentController } from '../controllers/appointmentController.js';
+import { createAppointment, getAppointments, getAppointment, deleteAppointment, updateAppointment } from '../controllers/appointmentController.js';
+import { authRequired } from '../middleware/validateToken.js';
+import { validateSchema } from '../middleware/validateSchema.js';
+import { registerAppointmentSchema } from '../Schemas/appointmentSchema.js';
 
 const router = express.Router();
 
-// Ruta para crear una nueva cita
-router.post('/appointments', createAppointmentController);
+// create
+router.post('/appointment', authRequired, validateSchema(registerAppointmentSchema), createAppointment);
+
+// get appointments
+router.get('/appointments', authRequired, getAppointments);
+
+// get appointment by id
+router.get('/appointment/:id', authRequired, getAppointment);
+
+// delete appointment
+router.delete('/appointment/:id', authRequired, deleteAppointment);
+
+// update appointment
+router.put('/appointment/:id', authRequired, updateAppointment);
+
+
+
+
+
 
 // Ruta para obtener citas disponibles
 router.get('/availableAppointments', (req, res) => {
@@ -24,5 +44,9 @@ router.get('/availableAppointments', (req, res) => {
         res.status(500).json({ error: 'Error fetching available appointments' }); // Envía un error al cliente
     }
 });
+
+
+
+
 
 export default router;
